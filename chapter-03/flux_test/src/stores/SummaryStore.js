@@ -1,3 +1,10 @@
+import AppDispatcher from '../AppDispatcher.js';
+import * as ActionTypes from '../ActionTypes.js';
+import CounterStore from './CounterStore.js';
+import {EventEmitter} from 'events';
+
+const CHANGE_EVENT = 'changed';
+
 function computeSummary(counterValue) {
     let sum = 0;
     for (const key in counterValue) {
@@ -28,3 +35,4 @@ SummaryStore.dispatchToken = AppDispatcher.register((action) => {
         SummaryStore.emitChange()
     }
 });
+export default SummaryStore;
