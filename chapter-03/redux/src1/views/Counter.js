@@ -1,6 +1,6 @@
 import React, { Component, PropTypes} from 'react';
 import * as Actions from '../Actions.js';
-import store from '../Provider.js';
+import store from '../Store.js';
 const buttonStyle = {
   margin: '10px'
 };
@@ -23,8 +23,8 @@ Counter.propTypes = {
     value: PropTypes.number.isRequired
 };
 class CounterContainer extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
 
         this.onIncrement = this.onIncrement.bind(this);
         this.onDecrement = this.onDecrement.bind(this);
@@ -35,23 +35,23 @@ class CounterContainer extends Component {
     }
     getOwnState() {
         return {
-            value: this.context.store.getState()[this.props.caption]
+            value: store.getState()[this.props.caption]
         };
     }
     componentDidMount() {
-        this.context.store.subscribe(this.onChange);
+        store.subscribe(this.onChange);
     }
     componentWileUnmount() {
-        this.context.store.unsubscribe(this.onChange);
+        store.unsubscribe(this.onChange);
     }
     onChange() {
         this.setState(this.getOwnState());
     }
     onIncrement() {
-        this.context.store.dispatch(Actions.increment(this.props.caption));
+        store.dispatch(Actions.increment(this.props.caption));
     }
     onDecrement() {
-        this.context.store.dispatch(Actions.decrement(this.props.caption));
+        store.dispatch(Actions.decrement(this.props.caption));
     }
     render() {
         return (
@@ -67,7 +67,5 @@ class CounterContainer extends Component {
 CounterContainer.propTypes = {
   caption: PropTypes.string.isRequired
 };
-CounterContainer.contextTypes = {
-  store: PropTypes.object
-}
+
 export default CounterContainer;
