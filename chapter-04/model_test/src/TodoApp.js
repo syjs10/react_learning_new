@@ -5,8 +5,8 @@ import { view as Filter } from './filter/';
 function TodoApp() {
     return (
         <div>
-            <Todos />
             <Filter />
+            <Todos />
         </div>
     );
 }

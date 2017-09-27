@@ -1,13 +1,13 @@
 import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from './actionTypes.js';
 
-export default (state => [], action) => {
+export default (state = [], action) => {
     switch (action.type) {
         case ADD_TODO: {
             return [
                 {
                     id: action.id,
                     completed: false,
-                    text: text
+                    text: action.text
                 },
                 ...state
             ];
@@ -22,7 +22,7 @@ export default (state => [], action) => {
             });
         };
         case REMOVE_TODO:{
-            return state.fliter((todoItem) => {
+            return state.filter((todoItem) => {
                 return todoItem.id !== action.id;
             });
         };

@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_T0DO, REMOVE_TODO } from './actionTypes.js';
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from './actionTypes.js';
 let nextTodoId = 0;
 export const addTodo = (text) => ({
     type: ADD_TODO,
@@ -7,7 +7,7 @@ export const addTodo = (text) => ({
     text: text
 });
 export const toggleTodo = (id) =>({
-    type: TOGGLE_T0DO,
+    type: TOGGLE_TODO,
     id: id
 });
 export const removeTodo = (id) =>({
