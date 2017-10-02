@@ -1,4 +1,4 @@
-import * as actions from './action.js';
+import * as actions from './actions.js';
 import reducer from './reducer.js';
 import view from './views/filters.js';
 

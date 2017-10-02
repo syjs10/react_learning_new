@@ -9,6 +9,5 @@ function TodoApp() {
             <Todos />
         </div>
     );
-};
-
+}
 export default TodoApp;
