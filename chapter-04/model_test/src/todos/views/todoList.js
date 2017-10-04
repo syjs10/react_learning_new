@@ -1,23 +1,23 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import TodoItem from './todoItem.js';
 import { FilterTypes } from '../../constants.js';
-import { toggleTodo, removeTodo } from '../action.js';
+import { toggleTodo, removeTodo } from '../actions.js';
 
 
 const TodoList = ({todos, onToggleTodo, onRemoveTodo}) => {
     return (
         <ul className="todo-list">
             {
-                todos.map((item) => {
+                todos.map((item) => (
                     <TodoItem
                         key={item.id}
-                        onToggle={()=>{onToggleTodo(item.id)}}
-                        onRemove={()=>{onRemoveTodo(item.id)}}
-                        completed={item.completed}
                         text={item.text}
+                        completed={item.completed}
+                        onToggle={() => onToggleTodo(item.id)}
+                        onRemove={() => onRemoveTodo(item.id)}
                     />
-                })
+                ))
             }
         </ul>
     );
@@ -40,10 +40,12 @@ const selectVisibleTools = (todos, filter) => {
 }
 
 const mapStateToProps = (state) => {
-    return selectVisibleTools(state.todos, state.filter);
+    return {
+        todos: selectVisibleTools(state.todos, state.filter)
+    };
 };
 
-const mapDispatchToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         onToggleTodo: (id) => {
             dispatch(toggleTodo(id));

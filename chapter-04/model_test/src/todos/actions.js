@@ -1,5 +1,5 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from './actionType.js';
-    let nextTodoId = 0;
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from './actionTypes.js';
+let nextTodoId = 0;
 export const addTodo = (text) => ({
     type: ADD_TODO,
     completed: false,

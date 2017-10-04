@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from './actionType.js';
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from './actionTypes.js';
 
 export default (state = [], action) => {
     switch (action.type) {
@@ -23,7 +23,7 @@ export default (state = [], action) => {
         };
         case REMOVE_TODO:{
             return state.filter((todoItem) => {
-                return action.id !== todoItem.id;
+                return todoItem.id !== action.id;
             });
         }
         default:{
