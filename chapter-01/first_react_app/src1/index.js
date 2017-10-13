@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestAPI from './TestAPI.js';
+import ClickCounter from './ClickCounter.js';
+// import './index.css';
 
 
 ReactDOM.render(
-    <TestAPI />,
+    <ClickCounter />,
     document.getElementById('root')
 );
